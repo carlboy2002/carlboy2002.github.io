@@ -1,18 +1,30 @@
-# _config.yml (最终修复版)
+# _config.yml (焦土战术版)
+# 请复制粘贴全部内容，完全覆盖你的旧文件。
 
 title: "Wuhao's Portfolio"
 author: Wuhao Xia
 
-only_build_toc_files: true
-exclude_patterns:
-  - .github/*
-  - .pytest_cache/*
-  - .venv/*
-  - _build/* # <-- 关键的新增行
+# 我们将手动排除所有内容，所以关闭这个选项以防万一。
+only_build_toc_files: false
 
+# 明确排除所有不在 _toc.yml 中的文件和所有目录
+exclude_patterns:
+  # 目录
+  - .github/*
+  - .venv/*
+  - _build/*
+  - .pytest_cache/*
+  # 根目录中的其他文件
+  - .gitignore
+  - lecture_16_example.ipynb
+  - Motor_Vehicle_Collisions_-_Crashes_20251101.csv
+  - requirements.txt
+
+# 保持执行关闭
 execute:
   execute_notebooks: "off"
 
+# 你的其余配置
 sphinx:
   config:
     myst_heading_anchors: 4

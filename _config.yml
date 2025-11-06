@@ -1,7 +1,7 @@
 # https://jupyterbook.org/customize/config.html
 
-title: "Wuhao Xia's Portfolio"
-author: Wuhao Xia
+title: "Wuhao's Portfolio"
+author: Wuhao
 
 # https://jupyterbook.org/v1/structure/configure.html#disable-building-files-that-arent-in-the-table-of-contents
 only_build_toc_files: true
@@ -21,3 +21,10 @@ sphinx:
     html_js_files:
       - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.7/require.min.js
     suppress_warnings: ["mystnb.unknown_mime_type"]
+
+exclude:
+  - .venv
+  - _build
+  - .github
+  - .venv/
+  - .github/

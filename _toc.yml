@@ -3,3 +3,5 @@ root: index
 chapters:
   - file: lecture_16_example
   - file: Project_1
+  - file: 0928_webpage_summarizer
+  - file: 1025_brochure_generator

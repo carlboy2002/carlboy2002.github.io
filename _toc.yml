@@ -2,5 +2,3 @@ format: jb-book
 root: index
 chapters:
   - file: Project_1
-  - file: 0928_webpage_summarizer
-  - file: 1025_brochure_generator

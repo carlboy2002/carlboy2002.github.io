@@ -1,33 +1,23 @@
-# _config.yml (焦土战术版)
-# 请复制粘贴全部内容，完全覆盖你的旧文件。
+# https://jupyterbook.org/customize/config.html
 
-title: "Wuhao's Portfolio"
+title: "Wuhao Xia's Portfolio"
 author: Wuhao Xia
 
-# 我们将手动排除所有内容，所以关闭这个选项以防万一。
-only_build_toc_files: false
-
-# 明确排除所有不在 _toc.yml 中的文件和所有目录
+# https://jupyterbook.org/v1/structure/configure.html#disable-building-files-that-arent-in-the-table-of-contents
+only_build_toc_files: true
 exclude_patterns:
-  # 目录
   - .github/*
-  - .venv/*
-  - _build/*
   - .pytest_cache/*
-  # 根目录中的其他文件
-  - .gitignore
-  - lecture_16_example.ipynb
-  - Motor_Vehicle_Collisions_-_Crashes_20251101.csv
-  - requirements.txt
+  - .venv/*
 
-# 保持执行关闭
 execute:
   execute_notebooks: "off"
 
-# 你的其余配置
 sphinx:
   config:
+    # https://myst-parser.readthedocs.io/en/latest/syntax/cross-referencing.html#implicit-targets
     myst_heading_anchors: 4
+    # https://jupyterbook.org/v1/interactive/interactive.html#plotly
     html_js_files:
       - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.7/require.min.js
     suppress_warnings: ["mystnb.unknown_mime_type"]

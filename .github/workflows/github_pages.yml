@@ -6,51 +6,45 @@ on:
       - master
       - main
 
+permissions:
+  pages: write
+  id-token: write
+
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      # 拉取仓库
-      - uses: actions/checkout@v4
 
-      # 设置 Python 3.11
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: pip
+          cache: 'pip'
 
-      # 安装依赖
-      - name: Install dependencies
-        run: |
-          cd "DSPC6000/Computing in Context/carlboy2002.github.io"
-          pip install --upgrade pip
-          pip install -r requirements.txt
-
-      # 可选：缓存执行过的 notebooks
-      - name: Cache executed notebooks
+      - name: Cache pip dependencies
         uses: actions/cache@v4
         with:
-          path: DSPC6000/Computing in Context/carlboy2002.github.io/_build/.jupyter_cache
-          key: jupyter-book-cache-${{ hashFiles('DSPC6000/Computing in Context/carlboy2002.github.io/requirements.txt') }}
+          path: ~/.cache/pip
+          key: pip-cache-${{ runner.os }}-requirements-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            pip-cache-${{ runner.os }}-
 
-      # 构建 Jupyter Book
-      - name: Build the book
+      - name: Install dependencies
         run: |
-          cd "DSPC6000/Computing in Context/carlboy2002.github.io"
-          jupyter-book build .
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      # 上传构建好的 HTML
-      - name: Upload artifact
+      - name: Build Jupyter Book
+        run: jupyter-book build .
+
+      - name: Upload built site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "DSPC6000/Computing in Context/carlboy2002.github.io/_build/html"
+          path: _build/html
 
-      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

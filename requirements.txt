@@ -5,4 +5,4 @@ plotly
 # needed for plotly
 nbformat
 statsmodels
-jupyter-book
+jupyter-book==1.0.3

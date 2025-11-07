@@ -9,6 +9,8 @@ exclude_patterns:
   - .github/*
   - .pytest_cache/*
   - .venv/*
+  - _build/*
+  - "*.csv"
 
 execute:
   execute_notebooks: "off"
